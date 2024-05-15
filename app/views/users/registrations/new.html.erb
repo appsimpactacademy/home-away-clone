@@ -1,0 +1,62 @@
+<div class="col-lg-4 mx-auto mt-2 border border-dark p-2">
+  <h2 class="text-center">Sign up</h2>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "users/shared/error_messages", resource: resource %>
+
+    <div class="form-group">
+      <%= f.label :first_name %><br />
+      <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: 'form-control mt-1 mb-1 rounded-0' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :last_name %><br />
+      <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: 'form-control mt-1 mb-1 rounded-0' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :phone_number %><br />
+      <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number", class: 'form-control mt-1 mb-1 rounded-0' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :role %><br />
+      <%= f.select :role, options_for_select(User::ROLE, selected: f.object.role), { autofocus: true, autocomplete: "role", prompt: 'Select User Role'}, {class: 'form-select mt-1 mb-1 rounded-0'} %>
+
+    </div>
+
+    <div class="form-group">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control mt-1 mb-1 rounded-0' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "new-password", class: 'form-control mt-1 mb-1 rounded-0' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control mt-1 mb-1 rounded-0' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :profile_picture %><br />
+      <%= f.file_field :profile_picture, autofocus: true, autocomplete: "profile_picture", class: 'form-control mt-1 mb-1 rounded-0' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :biography %><br />
+      <%= f.text_area :biography, autofocus: true, autocomplete: "biography", class: 'form-control mt-1 mb-1 rounded-0' %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Sign up", class: 'btn btn-success rounded-0 mt-1 mb-1' %>
+      <%= link_to "Log in", new_session_path(resource_name), class: 'btn btn-outline-success rounded-0 mt-1 mb-1' %><br>
+      <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name), class: 'btn btn-outline-success rounded-0 mt-1 mb-1' %>
+    </div>
+  <% end %>
+</div>
